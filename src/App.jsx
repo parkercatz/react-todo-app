@@ -31,6 +31,17 @@ export const App = () => {
     setIncompleteTodos(newTodos);
   };
 
+  const onClickComplete = (index) => {
+    // 現在の配列を取得
+    const newIncompleteTodos = [...incompleteTodos];
+    // index番目の値を削除する
+    newIncompleteTodos.splice(index, 1);
+    // 現在の完了の配列に押下されたtodoを追加
+    const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
+    setIncompleteTodos(newIncompleteTodos);
+    setCompleteTodos(newCompleteTodos);
+  };
+
   return (
     <>
       <div className="input-area">
@@ -48,7 +59,7 @@ export const App = () => {
             return (
               <div key={todo} className="list-row">
                 <li>{todo}</li>
-                <button>完了</button>
+                <button onClick={() => onClickComplete(index)}>完了</button>
                 {/* 押下時にonClickDeleteを発火させたいのでアロー関数を使用する */}
                 {/* indexを渡すことによって何番目かを判別させる */}
                 <button onClick={() => onClickDelete(index)}>削除</button>
