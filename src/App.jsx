@@ -22,6 +22,15 @@ export const App = () => {
     setTodoText("");
   };
 
+  const onClickDelete = (index) => {
+    // 現在の配列を取得
+    const newTodos = [...incompleteTodos];
+    // index番目の値を削除する
+    newTodos.splice(index, 1);
+    // 配列を更新する
+    setIncompleteTodos(newTodos);
+  };
+
   return (
     <>
       <div className="input-area">
@@ -35,12 +44,14 @@ export const App = () => {
       <div className="imcomplete-area">
         <p className="title">未完了のTODO</p>
         <ul>
-          {incompleteTodos.map((todo) => {
+          {incompleteTodos.map((todo, index) => {
             return (
               <div key={todo} className="list-row">
                 <li>{todo}</li>
                 <button>完了</button>
-                <button>削除</button>
+                {/* 押下時にonClickDeleteを発火させたいのでアロー関数を使用する */}
+                {/* indexを渡すことによって何番目かを判別させる */}
+                <button onClick={() => onClickDelete(index)}>削除</button>
               </div>
             );
           })}
