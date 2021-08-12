@@ -25,15 +25,6 @@ p {
   margin-right: 8px;
 }
 
-.input-area {
-  width: 400px;
-  height: 30px;
-  padding: 8px;
-  margin: 8px;
-  background-color: #c1ffff;
-  border-radius: 8px;
-}
-
 .imcomplete-area {
   width: 400px;
   min-height: 200px;
